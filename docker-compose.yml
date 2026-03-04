@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  health_check:
+    build: .
+    container_name: health_check_service
+    ports:
+      - "4444:8080"
+    restart: unless-stopped
