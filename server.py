@@ -7,9 +7,9 @@ class HealthCheckHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/health' or self.path == '/':
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'{"status": "ok"}')
+            self.wfile.write(b'OK')
         else:
             self.send_error(404, "Not Found")
 
