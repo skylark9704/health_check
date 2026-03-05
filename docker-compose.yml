@@ -7,3 +7,13 @@ services:
     ports:
       - "4444:8080"
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.healthcheck.rule=Host(`health.afullstackguy.dev`)"
+      - "traefik.http.routers.healthcheck.entrypoints=websecure"
+      - "traefik.http.routers.healthcheck.tls.certresolver=cloudflare"
+    networks:
+      - traefik_net
+networks:
+  traefik_net:
+    external: true
